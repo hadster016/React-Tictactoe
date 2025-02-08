@@ -1,0 +1,401 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: grid;
+    /* height: 80vh; */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header"
+        "main"
+        "main"
+        "newsection"
+        "footer";
+}
+
+header{
+    grid-area: header;
+    background: radial-gradient(circle, rgba(85, 85, 85, 0.788) 20%, rgba(48, 47, 47, 0) 100%);
+    /* background-color: rgba(104, 104, 104, 0.788); */
+    /* border-radius: 30px; */
+    padding: 20px;
+    text-align: center;
+}
+header:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 5px #ffc800da, 0 0 10px #ffc800d7, 0 0 15px #ffc800da;
+}
+
+aside{
+    grid-area: newsection;
+    background-color: whitesmoke;
+    height: 25vh;
+    padding: 20px;
+    text-align: center;
+}
+
+main{
+    grid-area: main;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    margin: 50px;
+    height: 90vh;
+}
+footer{
+    grid-area: footer;
+    background: radial-gradient(circle, rgba(85, 85, 85, 0.788) 0%, rgba(48, 47, 47, 0) 100%);
+    /* background-color: rgb(210, 228, 222); */
+    padding: 20px;
+    text-align: center;
+}
+
+        /* body {
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            background-color: #f5f5f5;
+        } */
+        .window {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr ;
+            grid-template-rows: 1fr 1fr 1fr;
+            width: 95%;
+            height: 95%;
+            position: sticky;
+        }
+
+        /* Central Square */
+        .square {
+            position: absolute;
+            border: solid 1px goldenrod;
+            top: 33%;
+            left: 33%;
+            width: 33%;
+            height: 33%;
+            transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+            z-index: 3;
+            background-color: white;
+
+        }
+
+        /* Panes: Top-left, Top-right, Bottom-left, Bottom-right */
+        .pane {
+            position: relative;
+            background-color: rgb(250, 250, 227);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+            
+        }
+        .figure {
+            margin: 0;
+            width: 90%;
+            height: 60%;
+            position: relative;
+                }
+        img {
+            margin-top: 5px;
+            width: 70%;  /* Stretch to fill the container's width */
+            height: 70%; /* Stretch to fill the container's height */
+            object-fit: contain;  /* maintains aspect ratio and fills the square */
+        }
+        
+        .pane1 { grid-column: 1; grid-row: 1; }
+        .pane2 { grid-column: 3; grid-row: 1; }
+        .pane3 { grid-column: 1; grid-row: 3; }
+        .pane4 { grid-column: 3; grid-row: 3; }
+
+        /* Dividers (lines) between panes */
+        .divider {
+            background-color: #135ca56b;
+            position: absolute;
+            transition: all 0.4s ease;
+            display: block; /* By default, dividers are visible */
+        }
+
+        /* Horizontal divider */
+        .divider-horizontal {
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 5px;
+            z-index: 1;
+        }
+
+        /* Vertical divider */
+        .divider-vertical {
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 5px;
+            z-index: 1;
+        }
+
+
+        /* Hover effects for the panes (move lines away) */
+        .pane1:hover ~ .divider-vertical {
+            left: 66%; /* Move vertical divider to the right */
+        }
+
+        .pane1:hover ~ .divider-horizontal {
+            top: 66%; /* Move horizontal divider down */
+        }
+
+        .pane2:hover ~ .divider-vertical {
+            left: 33%; /* Move vertical divider to the left */
+        }
+
+        .pane2:hover ~ .divider-horizontal {
+            top: 66%; /* Move horizontal divider down */
+        }
+
+        .pane3:hover ~ .divider-vertical {
+            left: 66%; /* Move vertical divider to the right */
+        }
+
+        .pane3:hover ~ .divider-horizontal {
+            top: 33%; /* Move horizontal divider up */
+        }
+
+        .pane4:hover ~ .divider-vertical {
+            left: 33%; /* Move vertical divider to the left */
+        }
+
+        .pane4:hover ~ .divider-horizontal {
+            top: 33%; /* Move horizontal divider up */
+        }
+
+        /* For making the central square expand on hover */
+        .square:hover  {
+            width: 50%;
+            height: 50%;
+            top: 27%;
+            left: 27%;         
+        }
+
+        /* Make dividers invisible when hovering over the square */
+        .hide-divider {
+            display: none;
+        }
+        
+        /* Grey out all other panels when one is hovered */
+        .pane:hover {
+            color: black; /* Keep the hovered pane black */
+            background-color:  rgb(155, 172, 224);/*rgb(135,206,235)*/;
+        }
+        .pane:not(:hover) {
+            color: grey; /* Grey out all other panes */
+        }
+        .project-panel:not(:hover){ color: darkgrey;}
+
+        /* Hover effects for the panes (grow the hovered ones*/
+        .pane1:hover ~ .pane3 {
+                transform: translateY(100px);
+            }
+        .pane1:hover {
+            position: relative;
+            top: 100px;
+            left: 200px;
+            z-index: 3;
+            transform: scale(1.6);
+        }
+        .pane2:hover ~ .pane4 {
+                transform: translateY(100px);
+            }
+        .pane2:hover {
+            position: relative;
+            top: 50px;
+            right: 200px;
+            z-index: 3;
+            transform: scale(1.6);
+        }
+
+        .pane3:hover {
+            position: relative;
+            top: -30px;
+            left: 200px;
+            z-index: 3;
+            transform: scale(1.6);
+        }
+
+        .pane4:hover {
+            position: relative;
+            top: -30px;
+            right: 200px;
+            z-index: 3;
+            transform: scale(1.6);
+        }
+
+        /* Hide the square when hovering over any pane */
+        .hide-square {
+            display: none;
+        }
+
+    @media screen and (max-width: 1199px) {
+    /* Adjust the layout for small screens */
+    .window {
+        /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+        grid-template-columns: 1fr; /* Stack panes vertically */
+        grid-template-rows: auto auto auto auto; /* Stack rows*/
+    }
+    .square {
+        display: none;
+    }
+
+    .pane1, .pane2, .pane3, .pane4 {
+        width: 40vw; /* Make panes take full width on small screens */
+        height: 40vh; /* Make panes take full height */
+    }
+
+    .divider-horizontal {
+        height: 3px; /* Make horizontal divider thinner */
+        top: 50%;
+    }
+
+    .divider-vertical {
+        width: 3px; /* Make vertical divider thinner */
+        left: 50%;
+    }
+
+    /* Ensure dividers stay visible when hovering over panes */
+    .square:hover ~ .divider-vertical,
+    .square:hover ~ .divider-horizontal {
+        display: block;
+    }
+
+    /* remove or modify the hover effects */
+    /* .pane1:hover, .pane2:hover, .pane3:hover, .pane4:hover {
+        transform: scale(1); /* Disable scaling for small screens */
+    /*} */
+}
+
+    @media screen and (max-width: 412px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    header, main, aside, footer {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    main {
+        margin: 0;
+        height: auto;
+    }
+    .pane1, .pane2, .pane3, .pane4 {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .divider-horizontal, .divider-vertical {
+        display: none;
+    }
+    .window {
+        width: 90vw; /* Use a smaller width for mobile */
+        min-width: 250px; /* Prevent layout from shrinking below 480px*/
+        display: flex;
+        flex-direction: column; 
+    }
+    .square {
+        display: none;
+    }
+
+    .pane1, .pane2, .pane3, .pane4 {
+        width: 50%;
+        height: 50%;
+        /* transform: scale(1); */
+        z-index: 1;
+        background-color: transparent;
+        font-size: 16px;
+        /* color: black; */
+    }
+    .pane1 .pane-content h3,
+    .pane2 .pane-content h3,
+    .pane3 .pane-content h3,
+    .pane4 .pane-content h3 {
+        font-weight: bold;
+    }
+
+    .divider-horizontal, .divider-vertical {
+        height: 3px;
+        width: 3px;
+    }
+
+}
+.typewriter-effect {
+        display: flex;
+        justify-content: center;
+        font-family: monospace;
+      }
+      
+      .typewriter-effect > .text {
+        /* max-width: 0; */
+        -webkit-animation: typing 10s steps(var(--characters)) infinite; 
+                 animation: typing 6s steps(var(--characters)) infinite;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-right: 10px;
+         /* Cursor effect */
+        border-right: 2px solid black;
+         /* animation: blink 0.75s step-end infinite; /*Make the cursor blink */
+         /* animation: typing 3.5s steps(var(--characters)) infinite 1s forwards, blink 0.75s step-end ; */
+      }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent; /* Hide the cursor */
+          } 
+     }  
+      
+            /* Typewriter effect with steps for animation */
+    @keyframes typing {
+                0% {
+                    width: 0;
+                }
+                100% {
+                    width: 25%;
+                }
+             } 
+
+    .projects-container {
+                         display: flex;
+                         flex-wrap: wrap;  
+                         justify-content: space-between;  
+             }
+    .project-panel {
+                 border-radius: 15px;  
+                 font-size: 0.7rem;
+                 justify-content: space-between;
+                 /* flex-direction: row; */
+                 flex: 0 1 calc(33.333% - 20px);
+                 margin: 10px;
+                 padding: 10px;
+                 border: 1px solid #ccc;
+                 text-align: center;
+                 box-sizing: border-box;
+                 background-color: rgb(71, 102, 240);
+                 color: white;
+             }
+             /* Make the last panel fill the remaining space */
+    .project-panel:last-child {
+                 flex: 1 1 auto; /* Allow the last panel to grow and fill the remaining space */
+                 margin-left: 10px;
+             }    
+    .project-panel:hover {
+        background-color: rgb(83, 133, 150);
+    }
+    .social-icon {
+        color: white;
+        margin: 0 10px;
+        transition: transform 0.3s, text-shadow 0.3s;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.2);
+        text-shadow: 0 0 5px #ffc600, 0 0 10px #ffc600, 0 0 15px #ffc600;
+    }
