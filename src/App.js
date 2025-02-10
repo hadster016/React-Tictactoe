@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Board({ xIsNext, squares, onPlay }) {
   // const [xIsNext, setXIsNext] = useState(true);
@@ -37,6 +37,7 @@ function Board({ xIsNext, squares, onPlay }) {
   return  (
   <>
  <div className="status">{status}</div>
+
       {[0, 1, 2].map(row => (
         <div key={row} className="board-row">
           {[0, 1, 2].map(col => {
@@ -48,9 +49,9 @@ function Board({ xIsNext, squares, onPlay }) {
                 onSquareClick={() => handleClick(index)}
               />
             );
-          } ) }
+          })}
         </div>
-       ) ) }
+      ))}
   {/* <div className="status">{status}</div>
     <div className="board-row">
       <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
@@ -169,7 +170,7 @@ const Footer = () => {
   return (
     <div className="game">
       <div className="game-container">
-      <h1 >Haider's Tic Tac Toe - React game</h1>
+      <h1>Haider's Tic Tac Toe - React game</h1>
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
@@ -180,22 +181,11 @@ const Footer = () => {
         </button>
         <ol>{displayedMoves}</ol>
       </div>
-      <footer>
-        <Footer />
-
-      </footer>
+      {window.self === window.top && <Footer />}
     </div>
   );
 }
-
-  // Check if the page is loaded in an iframe
-  if (window.self !== window.top) {
-    // Hide the "Return to Home" button
-    const homeButton = document.querySelector('.footer');
-    if (homeButton) {
-      homeButton.style.display = 'none';
-    }
-  }
+  
 // export default function Game() {
 //   // const [xIsNext, setXIsNext] = useState(true);
 //   const [history, setHistory] = useState([Array(9).fill(null)]);
