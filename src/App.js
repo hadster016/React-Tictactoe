@@ -160,9 +160,7 @@ const Footer = () => {
   return (
       <footer>
           <div>
-              <a href="../working.html">Go to Homepage</a>
-              {/* Alternatively, you can use a button */}
-              {/* <button onClick={() => window.location.href = '/index.html'}>Go to Homepage</button> */}
+              <a href="https://hadster016.github.io/Portfolio/index.html">Go to Homepage</a>
           </div>
       </footer>
   );
