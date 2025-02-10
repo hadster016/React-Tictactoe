@@ -187,6 +187,15 @@ const Footer = () => {
     </div>
   );
 }
+
+  // Check if the page is loaded in an iframe
+  if (window.self !== window.top) {
+    // Hide the "Return to Home" button
+    const homeButton = document.querySelector('.footer');
+    if (homeButton) {
+      homeButton.style.display = 'none';
+    }
+  }
 // export default function Game() {
 //   // const [xIsNext, setXIsNext] = useState(true);
 //   const [history, setHistory] = useState([Array(9).fill(null)]);
